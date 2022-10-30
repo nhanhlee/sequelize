@@ -42,14 +42,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain}}/api/getlikeres/4",
+							"raw": "{{domain}}/api/getlikeres/1",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"api",
 								"getlikeres",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -61,14 +61,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain}}/api/getlikeuser/3",
+							"raw": "{{domain}}/api/getlikeuser/2",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"api",
 								"getlikeuser",
-								"3"
+								"2"
 							]
 						}
 					},

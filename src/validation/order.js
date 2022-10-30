@@ -7,8 +7,6 @@ const { body, param, query } = require('express-validator')
 let addOrder = [
     body('user_id').exists().withMessage('user_id is required').isInt([{ min: 1 }]).withMessage('user_id phải là kiểu INT').custom(value => {
         return model.user.findOne({where : {user_id : value}}).then(user =>{
-            console.log("=============")
-            console.log(user)
             if(!user){
                 console.log("test")
                 return Promise.reject( "user không tồn tại")
@@ -29,14 +27,3 @@ let addOrder = [
 
 module.exports = {addOrder}
 
-//   body('arr_sub_id').custom(value => {
-//       return Promise.all([
-//         value.forEach((item)=> {
-//           return model.sub_food.findOne({where : {sub_id : item}}).then(data =>{
-//             if(!data){
-//               return Promise.reject('ko ton tai');
-//             }
-//         })
-//         })
-//       ])
-//   })

@@ -43,24 +43,18 @@ const postLike = async (req,res)=>{
 const getLike_res = async (req,res)=>{
     try{
         let res_id = req.params.res_id;
-        let checkRes = await model.restaurant.findOne({where : {res_id}})
-        if(checkRes){
-            let result = await model.like_res.findAll({
-                where : {
-                    res_id 
-                },
-                include : ["re","user"]
-            })
-            
-            if(result.length == 0){
-                successCode(res, result, "không tìm thấy dữ liệu");
-            }
-            else{
-                successCode(res, result, "lấy dữ liệu thành công");
-            }
+        let result = await model.like_res.findAll({
+            where : {
+                res_id 
+            },
+            include : ["re","user"]
+        })
+        
+        if(result.length == 0){
+            successCode(res, result, "không tìm thấy dữ liệu");
         }
-        else {
-            failCode(res,"","nhà hàng ko tồn tại")
+        else{
+            successCode(res, result, "lấy dữ liệu thành công");
         }
     }
     catch(err){
@@ -72,24 +66,18 @@ const getLike_res = async (req,res)=>{
 const getLike_user = async (req,res)=>{
     try{
         let user_id = req.params.user_id;
-        let checkUser = await model.user.findOne({where : {user_id}})
-        if(checkUser){
-            let result = await model.like_res.findAll({
-                where : {
-                    user_id
-                },
-                include : ["user","re"]
-            })
-    
-            if(result.length == 0){
-                successCode(res, result, "không tìm thấy dữ liệu");
-            }
-            else{
-                successCode(res, result, "lấy dữ liệu thành công");
-            }
+        let result = await model.like_res.findAll({
+            where : {
+                user_id
+            },
+            include : ["user","re"]
+        })
+
+        if(result.length == 0){
+            successCode(res, result, "không tìm thấy dữ liệu");
         }
-        else {
-            failCode(res,"","user không tồn tại")
+        else{
+            successCode(res, result, "lấy dữ liệu thành công");
         }
     }
     catch(err){

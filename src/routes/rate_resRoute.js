@@ -5,7 +5,7 @@ const validation = require('../validation/index')
 const validator = require('../middlewares/validator')
 
 rate_resRoute.post('/postrate',validation.rate.postRate,validator,postRate_res)
-rate_resRoute.get('/getrateres/:res_id',getRate_res);
-rate_resRoute.get('/getrateuser/:user_id',getRate_user);
+rate_resRoute.get('/getrateres/:res_id',validation.rate.getRateRes,validator,getRate_res);
+rate_resRoute.get('/getrateuser/:user_id',validation.rate.getRateUser,validator,getRate_user);
 
 module.exports = rate_resRoute;
