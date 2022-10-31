@@ -5,7 +5,7 @@ const model = init_models(sequelize);
 const { body, param, query } = require('express-validator')
 
 let addOrder = [
-    body('user_id').exists().withMessage('user_id is required').isInt([{ min: 1 }]).withMessage('user_id phải là kiểu INT').custom(value => {
+    body('user_id').exists().withMessage('Bạn chưa truyền user_id').isInt([{ min: 1 }]).withMessage('user_id phải là kiểu INT').custom(value => {
         return model.user.findOne({where : {user_id : value}}).then(user =>{
             if(!user){
                 console.log("test")
@@ -13,7 +13,7 @@ let addOrder = [
             }
         })
     }),
-    body('food_id').exists().withMessage('food_id is required').isInt([{ min: 1 }]).withMessage('food_id phải là kiểu INT').custom(value => {
+    body('food_id').exists().withMessage('Bạn chưa truyền food_id').isInt([{ min: 1 }]).withMessage('food_id phải là kiểu INT').custom(value => {
         return model.food.findOne({where : {food_id : value}}).then(data =>{
             if(!data){
                 return Promise.reject("Food không tồn tại")

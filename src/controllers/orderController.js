@@ -7,18 +7,8 @@ const { Op } = require("sequelize");
 const addOrder = async (req, res)=>{
     try{
         let body = {...req.body}
-        // let arr_sub_id = body.arr_sub_id
-        // arr_sub_id.forEach(async(element) => {
-        //     let checkSub = await model.sub_food.findOne({where : {
-        //         sub_id : element
-        //     }})
-
-        //     if(!checkSub){
-        //         console.log("1") 
-        //         failCode(res,"","ko ton tại");
-        //     }
-        // })
-
+        let arr_sub_id = body.arr_sub_id;
+        
         let checkOrder = await model.order.findOne({where : {
             user_id : body.user_id,
             food_id : body.food_id
